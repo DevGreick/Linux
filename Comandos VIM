@@ -1,1 +1,35 @@
 
+
+*********************** Posicionamento ******************************
+GG = Fim da linha
+gg = Inicio da linha
+dd = apaga linha inteira
+
+************************ Excluir linha ******************************
+
+dd = apaga linha inteira
+x = deleta caracter onde o cursor estiver
+X = deleta caracter atras do cursor 
+
+************************ Copiar, Recortar e Colar *****************************
+y = Copiar
+p = Colar
+yy = Copiar linha inteira
+v (visual) direcional do teclado (selecionar texto) y = copiar selecionando o texto
+ddp = Recortar e Colar
+************************* Desfazer e Refazer ********************************
+u = Desfazer
+U = Desfazer linha  inteira
+Ctrl + R = Refazer ultima ação
+
+************************* Localizar **************************
+
+/buscanoarquivo = buscar 
+n = pula pra proxima busca no arquivo
+N = retrocede a busca no arquivo
+
+************************** Salvando e Saindo **************************
+
+:q! = Sair sem salvar descartando alteração
+:wq! = sair Salvando
+:q = sair sem salvar pedindo confirmação
