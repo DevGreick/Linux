@@ -1,0 +1,27 @@
+
+R = Read ou leitura
+W = Write ou escrita
+x = execute ou executar
+
+
+0 0 0 -> 0 -> nenhuma permissão
+
+0 0 1 -> 1 -> apenas execução
+
+0 1 0 -> 2 -> apenas escrita
+
+0 1 1 -> 3 -> escrita e execução
+
+1 0 0 -> 4 -> apenas leitura
+
+1 0 1 -> 5 -> leitura e execução
+
+1 1 0 -> 6 -> leitura e escrita
+
+1 1 1 -> 7 -> leitura, execução e escrita
+
+ou seja
+
+chmod 750 = 7 leitura,execução e escrita (primeiro numero dono do arquivo)
+            5 leitura e execução ( usuarios de um grupo)
+            0 nenhuma permissão (usuarios do sistema)
