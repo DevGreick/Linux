@@ -2,7 +2,7 @@
 R = Read ou leitura
 W = Write ou escrita
 x = execute ou executar
-teste
+
 0 0 0 -> 0 -> nenhuma permissão
 
 0 0 1 -> 1 -> apenas execução
