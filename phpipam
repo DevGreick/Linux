@@ -1,1 +1,58 @@
+sudo apt update
+sudo apt install mariadb-server mariadb-client
+sudo systemctl enable mariadb
+sudo systemctl start mariadb
+sudo mysql_secure_installation
+sudo mysql -u root -p
+CREATE DATABASE phpipam;
+GRANT ALL ON phpipam.* TO phpipam@localhost IDENTIFIED BY 'senhaforteaqui';
+FLUSH PRIVILEGES;
+QUIT;
+sudo apt update 
+sudo apt -y install php php-{mysql,curl,gd,intl,pear,imap,memcache,pspell,tidy,xmlrpc,mbstring,gmp,json,xml,fpm}
+sudo apt -y install git
+sudo git clone --recursive https://github.com/phpipam/phpipam.git /var/www/html/phpipam
+cd /var/www/html/phpipam
+sudo cp config.dist.php config.php
+sudo nano config.php
+
+-----------------------------------
+sudo systemctl stop nginx && sudo systemctl disable nginx
+sudo apt -y install apache2
+sudo a2dissite 000-default.conf
+sudo a2enmod rewrite
+sudo systemctl restart apache2
+sudo apt -y install libapache2-mod-php php-curl php-xmlrpc php-intl php-gd
+sudo vim /etc/apache2/sites-available/phpipam.conf
+
+<VirtualHost *:80>
+    ServerAdmin admin@exemplo.com
+    DocumentRoot "/var/www/html/phpipam"
+    ServerName ipam.exemplo.com
+    ServerAlias www.ipam.exemplo.com
+    <Directory "/var/www/html/phpipam">
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+    ErrorLog "/var/log/apache2/phpipam-error_log"
+    CustomLog "/var/log/apache2/phpipam-access_log" combined
+</VirtualHost>
+sudo chown -R www-data:www-data /var/www/html
+sudo a2ensite phpipam
+sudo systemctl restart apache2
+--------------------------------------
+http://ipam.exemplo.com ou IP da maquina 
+
+Na primeira página, selecione "Nova instalação de phpipam"
+"Instruções de importação mysql
+
+sudo mysql -u root -p phpipam < /var/www/html/phpipam/db/SCHEMA.sql
+
+As credenciais de login padrão são:
+
+Username: admin
+Password: ipamadmin
+
+
 
