@@ -44,7 +44,7 @@ sudo systemctl restart apache2
 --------------------------------------
 http://ipam.exemplo.com ou IP da maquina 
 
-Na primeira página, selecione "Nova instalação de phpipam"
+Selecione "Nova instalação de phpipam"
 "Instruções de importação mysql
 
 sudo mysql -u root -p phpipam < /var/www/html/phpipam/db/SCHEMA.sql
@@ -54,5 +54,5 @@ As credenciais de login padrão são:
 Username: admin
 Password: ipamadmin
 
-
+config
 
