@@ -10,7 +10,7 @@ x = deleta caracter onde o cursor estiver
 X = deleta caracter atras do cursor 
 
 ************************ Copiar, Recortar e Colar *****************************
-y = Copiar
+y = Copiarmodified:   Comandos VIM
 p = Colar
 yy = Copiar linha inteira
 v (visual) direcional do teclado (selecionar texto) y = copiar selecionando o texto
