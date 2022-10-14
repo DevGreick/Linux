@@ -1,0 +1,93 @@
+Obs : Instalação feita para o meu notebook Avell I5 9º geração com placa de video nvidia gtx 1650, verifique suas configuracoes e adapte conforme suas necessidades.
+
+sudo su
+mkdir /mnt/gentoo
+mount /dev/nvme0n1p7 /mnt/gentoo
+cd /mnt/gentoo
+wget linkda imagem 
+tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner
+mount --types proc /proc /mnt/gentoo/proc
+mount --rbind /sys /mnt/gentoo/sys
+mount --make-rslave /mnt/gentoo/sys
+mount --rbind /dev /mnt/gentoo/dev
+mount --make-rslave /mnt/gentoo/dev
+mount --bind /run /mnt/gentoo/run
+mount --make-slave /mnt/gentoo/run 
+chroot /mnt/gentoo /bin/bash
+source /etc/profile
+export PS1="(chroot) ${PS1}"
+mount /dev/nvme0n1p2 /boot/
+nano /etc/resolv.conf
+nameserver 8.8.8.8
+emerge-webrsync
+emerge --sync
+eselect profile list
+eselect profile set 10                                                  #Apontamento para pacotes dos desktops enviroment escolher o que mais te agrada
+emerge --sync
+passwd 
+nano /etc/fstab
+tmpfs /var/tmp      tmpfs rw,nosuid,noatime,nodev,size=10g,mode=1777 0 0 
+tmpfs /var/tmp/portage    tmpfs rw,nosuid,noatime,nodev,size=10g,mode=775,uid=portage,gid=portage,x-mount.mkdir=775 0 0
+emerge cpuid2cpuflags                                                   # programa que aponta quais cpus sao compativeis com o seu
+cpuid2cpuflags
+nano /etc/portage/make.conf
+CPU_FLAGS_X86="aes avx avx2 f16c fma3 mmx mmxext pclmul popcnt rdrand sse sse2 sse3 sse4_1 sse4_2 ssse3"
+COMMON_FLAGS="-03 -pipe -march=skylake" 
+ACCEPT_LICENSE="*"
+INPUT_DEVICES="joystick wacom"
+MAKEOPTS="-j3"
+EMERGE_DEFAULT_OPTS="--keep-going=y --autounmask-write=y --jobs=4"
+PORTAGE_NICENESS=19
+salvar
+emerge app-portage/mirrorselect
+mirrorselect -i
+emerge -av gentoolkit
+time emerge -uNDa @world
+euse -E initramfs -p sys-kernel/linux-firmware
+emerge -av sys-kernel/linux-firmware
+emerge -av sys-kernel/gentoo-kernel-bin
+emerge --config sys-kernel/gentoo-kernel-bin
+nano /etc/locale.gen
+eselect locale list
+eselect locale set 5
+emerge -av grub net-wireless/wpa_supplicant dhcpcd
+emerge -av sys-fs/btrfs-progs
+emerge -av xorg-server
+nano /etc/portage/make.conf
+INPUT_DEVICES="libinput joystick wacom"
+VIDEO_CARDS="intel vesa nvidia"
+emerge -av ccache
+nano /etc/portage/package.env
+media-gfx/gimp ccache.conf
+salvar
+mkdir /etc/portage/env
+nano /etc/portage/env/ccache.conf
+FEATURES="ccache"
+salvar
+emerge app-text/tree
+mkdir /var/cache/ccache
+nano /var/cache/ccache/ccache.conf
+max_size = 10.0G
+compression = true
+compression_level = 1
+salvar
+emerge -av xorg-server awesome xterm
+nano /etc/fstab 							
+UUID=a37e1ae3-9d1e-40ec-9242-787963253a3c /               ext4    errors=remount-ro 0       1
+UUID=9AA8-E991  /boot/efi       vfat    umask=0077      0       1
+/swapfile                                 none            swap    sw              0       0
+cd /boot
+mount /efi
+grub-install --efi-directory=/boot/efi
+cd /etc/grub.d
+nano 40_custom
+grub=mkconfig -o /boot/grub/grub.cfg                                    <<<< desmascarar pacotes exemplo
+nano /etc/portage/package.accept_keywords                 
+media-video/obs-studio ~amd64                                           <<<< desmascarar pacotes exemplo
+euse -E <<comando para inserir flag
+euse -E matroska modplug mtp opus samba theora twolame vaapi vdpau x265 x264 faad 
+emerge -av networkmanager
+emerge -av plasma-meta
+
+
+
