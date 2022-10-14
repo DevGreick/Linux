@@ -1,0 +1,59 @@
+
+
+sudo adduser usuario1
+sudo adduser usuario2
+
+sudo mkdir /arquivos/estoque
+sudo mkdir /arquivos/gestao
+sudo mkdir /arquivos/publico
+
+sudo chmod 777 -R /arquivos/estoque
+sudo chmod 777 -R /arquivos/gestao
+sudo chmod 777 -R /arquivos/publico
+
+sudo apt update
+sudo apt install samba
+
+sudo smbpasswd -a usuario1
+sudo smbpasswd -a usuario2
+
+sudo cp /etc/samba/smb.conf /etc/samba/smb.conf.bkp
+
+[global]
+    workgroup = ESCRITORIO
+    netbios name = gutts
+    
+# Parâmetros Locais
+
+[Estoque]
+        comment = Arquivos de usuários
+        path = /arquivos/estoque
+        public = no
+        writable = yes
+        guest ok = no
+        read list = usuario1
+        create mask = 0775
+ directory mask = 0775
+               
+[Gestao]
+        comment = Arquivos de usuários
+        path = /arquivos/gestao
+        browseable = no
+        public = no
+        writable = no
+        guest ok = no
+        write list = usuario1,usuario2
+        create mask = 0775
+ directory mask = 0775
+                        
+[Publico]
+        comment = Pasta Publico
+        path = /arquivos/publico
+        browseable = yes
+        writable = yes
+        guest ok = no
+        public = yes
+        create mode = 0777
+        directory mode = 0777
+  
+sudo systemctl restart smbd.service nmbd.service
