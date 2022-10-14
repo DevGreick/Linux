@@ -1,0 +1,4 @@
+Conversão de certificado :
+exemplo:
+openssl pkcs12 -in teste.pfx -clcerts -nokeys -out teste.com.br.crt >>>>>>> transforma o certificado em crt
+openssl pkcs12 -in teste.com.br.pfx -nocerts -out teste.com.br.key >>>>>> cria a chave
