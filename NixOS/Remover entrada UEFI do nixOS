@@ -1,0 +1,10 @@
+# Remove gerações antigas do NIX #
+ sudo nix-env -p /nix/var/nix/profiles/system --delete-generations old
+# Remove arquivos de backup #
+ sudo nix-collect-garbage -d
+ # Lista os backups existentes
+ sudo nix-env -p /nix/var/nix/profiles/system --list-generations
+# Caminho dos backups NIXOS que aparecem no Boot
+cd /boot/efi/loader/entries
+# Deletar backups que aparecem no boot 
+sudo rm nixos-generation-XXX.conf   
