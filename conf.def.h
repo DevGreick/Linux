@@ -1,3 +1,4 @@
+
 Skip to content
 Search or jump to…
 Pull requests
@@ -36,8 +37,8 @@ static const unsigned int gappx     = 25;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Jetbrains Mono:size=13,5" };
-static const char dmenufont[]       = "Jetbrains Mono:size=13,5";
+static const char *fonts[]          = { "Jetbrains Mono:size=10,5" };
+static const char dmenufont[]       = "Jetbrains Mono:size=10,5";
 static const char col_gray1[] = "#222222";
 static const char col_gray2[] = "#444444";
 static const char col_gray3[] = "#bbbbbb";
@@ -50,7 +51,8 @@ static const char *colors[][3] = {
 [SchemeSel] = { col_gray4, col_gentoo_purple, col_gentoo_light_purple },
 };
 /* tagging */
-static const char *tags[] = { "🐧", "💻", "🇬", "📁", "🎬", "🎲", "🎮", "🎧", "📚" };
+static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
@@ -85,13 +87,11 @@ static const Layout layouts[] = {
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
-#define STATUSBAR "dwmblocks"
-
 /* commands */
 static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_gentoo_purple, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "terminator", "-e", "fish", NULL };
-static const char *htoprmcmd[]  = { "terminator", "-e", "htop", NULL };
-static const char *rangermcmd[]  = { "terminator", "-e", "ranger", NULL };
+static const char *termcmd[]  = { "st", "-e", "fish", NULL };
+static const char *htoprmcmd[]  = { "st", "-e", "htop", NULL };
+static const char *rangermcmd[]  = { "st", "-e", "ranger", NULL };
 static const char *chromermcmd[]  = { "google-chrome-stable", NULL };
 
 static const Key keys[] = {
@@ -144,9 +144,7 @@ static const Button buttons[] = {
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
-	{ ClkStatusText,        0,              Button1,        sigstatusbar,   {.i = 1} },
-	{ ClkStatusText,        0,              Button2,        sigstatusbar,   {.i = 2} },
-	{ ClkStatusText,        0,              Button3,        sigstatusbar,   {.i = 3} },
+	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
