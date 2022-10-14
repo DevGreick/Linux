@@ -1,4 +1,5 @@
 #!/bin/bash
+
 #############################################################################
 #
 # Este script cria um backup de todos os arquivos a partir deste diretorio
