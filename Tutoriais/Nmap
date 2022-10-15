@@ -1,0 +1,13 @@
+
+nmap -sp 192.100.1.1/24  - Varredura de ping
+nmap -sp <target IP range> - Varredura de Host
+nmap -sL <IP address>   -  Consulta dns do host especifico
+nmap -O <target IP> - Varredura de SO
+nmap --top-ports "port" "IP" -  verificar top portas de um host
+nmap -sS "ip" - Varredura TCP
+nmap -sT "ip" - Varredura TCP conectado
+nmap -sU "ip" - Varredura UDP
+nmap -sY "ip" - Varredura SCTP
+nmap -sN "ip" - Varredura para verificar status de portas sem consultas diretas
+nmap -sS  "ip" -oN "arquivo.txt" - efetuar a varredura e salvar em um arquivo txt
+nmap -sS "ip" -oN "arquivo.xml" - efetuar a varredura e salvar em um arquivo xml
