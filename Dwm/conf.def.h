@@ -63,7 +63,7 @@ static const char *termcmd[]  = { "terminator", "-e", "fish", NULL };
 static const char *htoprmcmd[]  = { "terminator", "-e", "htop", NULL };
 static const char *rangermcmd[]  = { "terminator", "-e", "ranger", NULL };
 static const char *chromermcmd[]  = { "google-chrome-stable", NULL };
-
+static const char *virtualrmcmd[]  = { "virtualbox", NULL };
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
@@ -71,6 +71,7 @@ static const Key keys[] = {
         { MODKEY,                       XK_t,      spawn,          {.v = htoprmcmd } },
 	{ MODKEY,                       XK_r,      spawn,          {.v = rangermcmd } },
 	{ MODKEY,                       XK_g,      spawn,          {.v = chromermcmd } },
+	{ MODKEY,                       XK_v,	   spawn,          {.v = virtualrmcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_Left,   focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_Right,  focusstack,     {.i = -1 } },
@@ -81,7 +82,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,             		XK_q,      killclient,     {0} },
-	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
+	{ MODKEY,                       XK_k,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
