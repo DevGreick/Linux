@@ -413,7 +413,7 @@ ver ()
 	elif [ $dtype == "suse" ]; then
 		cat /etc/SuSE-release
 	elif [ $dtype == "debian" ]; then
-		lsb_release -a
+		cat /usr/lib/os-release
 		# sudo cat /etc/issue && sudo cat /etc/issue.net && sudo cat /etc/lsb_release && sudo cat /etc/os-release # Linux Mint option 2
 	elif [ $dtype == "gentoo" ]; then
 		cat /etc/gentoo-release
