@@ -1,4 +1,4 @@
-Obs : Instalação feita para o meu notebook Avell I5 9º geração com placa de video nvidia gtx 1650, verifique suas configuracoes e adapte conforme suas necessidades.
+Obs : Instalação feita de outra distribuição ( NixoS ) para o meu notebook Avell I5 9º geração com placa de video nvidia gtx 1650, verifique suas configuracoes e adapte conforme suas necessidades.
 
 sudo su
 mkdir /mnt/gentoo
