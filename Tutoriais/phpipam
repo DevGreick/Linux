@@ -9,7 +9,6 @@ sudo apt -y install git
 sudo git clone --recursive https://github.com/phpipam/phpipam.git /var/www/html/phpipam
 cd /var/www/html/phpipam
 sudo cp config.dist.php config.php
-sudo nano config.php
 
 -----------------------------------
 sudo systemctl stop nginx && sudo systemctl disable nginx
