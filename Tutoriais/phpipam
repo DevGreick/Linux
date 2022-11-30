@@ -3,16 +3,13 @@ sudo apt install mariadb-server mariadb-client
 sudo systemctl enable mariadb
 sudo systemctl start mariadb
 sudo mysql_secure_installation
+digitar senha e por n nas proximas opções
 sudo apt update 
 sudo apt -y install php php-{mysql,curl,gd,intl,pear,imap,memcache,pspell,tidy,xmlrpc,mbstring,gmp,json,xml,fpm}
 sudo apt -y install git
 sudo git clone --recursive https://github.com/phpipam/phpipam.git /var/www/html/phpipam
 cd /var/www/html/phpipam
 sudo cp config.dist.php config.php
-
------------------------------------
-sudo systemctl stop nginx && sudo systemctl disable nginx
-sudo apt -y install apache2
 sudo a2dissite 000-default.conf
 sudo systemctl restart apache2
 sudo a2dissite 000-default.conf
@@ -21,7 +18,7 @@ sudo systemctl restart apache2
 sudo a2enmod rewrite
 sudo apt -y install libapache2-mod-php php-curl php-xmlrpc php-intl php-gd
 sudo vim /etc/apache2/sites-available/phpipam.conf
-
+----------------------------------------------------------------------------
 <VirtualHost *:80>
     ServerAdmin admin@exemplo.com
     DocumentRoot "/var/www/html/phpipam"
@@ -38,9 +35,9 @@ sudo vim /etc/apache2/sites-available/phpipam.conf
 
 -------------------------------
 sudo chown -R www-data:www-data /var/www/html
-sudo systemctl restart apache2
 sudo a2ensite phpipam
 sudo systemctl restart apache2
+sudo a2ensite phpipam
 --------------------------------------
 http://ipam.exemplo.com ou IP da maquina 
 
