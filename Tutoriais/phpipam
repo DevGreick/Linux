@@ -48,7 +48,6 @@ http://ipam.exemplo.com ou IP da maquina
 Selecione "Nova instalação de phpipam"
 "Instruções de importação mysql
 
-sudo mysql -u root -p phpipam < /var/www/html/phpipam/db/SCHEMA.sql
 
 As credenciais de login padrão são:
 
