@@ -50,5 +50,7 @@ As credenciais de login padrão são:
 Username: admin
 Password: ipamadmin
 
+Esqueci a senha 
 
+usar comando php functions/scripts/reset-admin-password.php no servidor que se localiza o phpipam
 
