@@ -3,11 +3,6 @@ sudo apt install mariadb-server mariadb-client
 sudo systemctl enable mariadb
 sudo systemctl start mariadb
 sudo mysql_secure_installation
-sudo mysql -u root -p
-CREATE DATABASE phpipam;
-GRANT ALL ON phpipam.* TO phpipam@localhost IDENTIFIED BY 'senhaforteaqui';
-FLUSH PRIVILEGES;
-QUIT;
 sudo apt update 
 sudo apt -y install php php-{mysql,curl,gd,intl,pear,imap,memcache,pspell,tidy,xmlrpc,mbstring,gmp,json,xml,fpm}
 sudo apt -y install git
@@ -20,8 +15,11 @@ sudo nano config.php
 sudo systemctl stop nginx && sudo systemctl disable nginx
 sudo apt -y install apache2
 sudo a2dissite 000-default.conf
+sudo systemctl restart apache2
+sudo a2dissite 000-default.conf
 sudo a2enmod rewrite
 sudo systemctl restart apache2
+sudo a2enmod rewrite
 sudo apt -y install libapache2-mod-php php-curl php-xmlrpc php-intl php-gd
 sudo vim /etc/apache2/sites-available/phpipam.conf
 
@@ -38,7 +36,10 @@ sudo vim /etc/apache2/sites-available/phpipam.conf
     ErrorLog "/var/log/apache2/phpipam-error_log"
     CustomLog "/var/log/apache2/phpipam-access_log" combined
 </VirtualHost>
+
+-------------------------------
 sudo chown -R www-data:www-data /var/www/html
+sudo systemctl restart apache2
 sudo a2ensite phpipam
 sudo systemctl restart apache2
 --------------------------------------
