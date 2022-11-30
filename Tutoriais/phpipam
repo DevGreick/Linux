@@ -45,8 +45,8 @@ sudo systemctl restart apache2
 http://ipam.exemplo.com ou IP da maquina 
 
 Selecione "Nova instalação de phpipam"
-"Instruções de importação mysql
-
+Instalação MariaDB/mysql
+seguir as instruções
 
 As credenciais de login padrão são:
 
