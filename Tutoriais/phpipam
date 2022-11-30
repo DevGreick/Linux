@@ -42,7 +42,7 @@ sudo a2ensite phpipam
 http://ipam.exemplo.com ou IP da maquina 
 
 Selecione "Nova instalação de phpipam"
-Instalação MariaDB/mysql
+import MariaDB/mysql
 seguir as instruções da pagina
 
 As credenciais de login padrão são:
