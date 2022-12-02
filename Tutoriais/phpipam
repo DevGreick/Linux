@@ -57,6 +57,7 @@ Erros
 
 Se colocar o titulo como vazio o phpipam pode parar de funcionar nesse caso seguir os comandos abaixo dentro do banco :
 sudo mysql -u root -p
+select phpipam;
 use phpipam;
 select * from settings;
 select id from settings;
