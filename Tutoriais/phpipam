@@ -49,12 +49,10 @@ As credenciais de login padrão são:
 Username: admin
 Password: ipamadmin
 
-Esqueci a senha ?
 
-usar comando php functions/scripts/reset-admin-password.php no servidor que se localiza o phpipam
 
-Erros 
-
+Erros ou problemas 
+Titulo vazio parou de funcionar o PHPIPAM
 Se colocar o titulo como vazio o phpipam pode parar de funcionar nesse caso seguir os comandos abaixo dentro do banco :
 sudo mysql -u root -p
 select phpipam;
@@ -63,3 +61,7 @@ select * from settings;
 select id from settings;
 update settings set siteTitle = 'teste' where id = 1;  obs : verificar o ID 
 select siteTitle from settings;
+
+Esqueci a senha ?
+
+usar comando php functions/scripts/reset-admin-password.php no servidor que se localiza o phpipam
