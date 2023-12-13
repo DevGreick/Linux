@@ -1,6 +1,7 @@
 #!/bin/bash -f
 
 # O script necessita do ipcalc para funcionar. 
+source /usr/share/ipcalc/ipcalc
 
 # Define o nome do arquivo de lista de IPs
 list=listIP.txt
