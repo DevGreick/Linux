@@ -4,7 +4,6 @@
 
 # Define o nome do arquivo de lista de IPs
 list=listIP.txt
-
 # Remove o arquivo, caso exista
 rm -f $list
 
